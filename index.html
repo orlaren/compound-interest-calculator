@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compound Interest Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Compound Interest Calculator</h1>
+    <form id="calc-form">
+      <div class="grid">
+        <label>Initial amount ($)
+          <input type="number" id="principal" min="0" step="0.01" value="10000" required />
+        </label>
+        <label>Annual interest rate (%)
+          <input type="number" id="rate" min="0" step="0.01" value="6" required />
+        </label>
+        <label>Years
+          <input type="number" id="years" min="1" step="1" value="30" required />
+        </label>
+        <label>Compounding frequency
+          <select id="frequency">
+            <option value="1">Annually</option>
+            <option value="4">Quarterly</option>
+            <option value="12" selected>Monthly</option>
+            <option value="26">Bi-weekly</option>
+            <option value="52">Weekly</option>
+            <option value="365">Daily</option>
+          </select>
+        </label>
+        <label>Monthly contribution ($)
+          <input type="number" id="contrib" min="0" step="0.01" value="200" />
+        </label>
+        <label>Inflation (optional, %/yr)
+          <input type="number" id="inflation" min="0" step="0.01" value="0" />
+        </label>
+      </div>
+      <div class="actions">
+        <button type="submit">Calculate</button>
+        <button type="button" id="reset">Reset</button>
+      </div>
+    </form>
+
+    <section class="results">
+      <h2>Results</h2>
+      <div class="cards">
+        <div class="card"><div class="label">Ending balance</div><div class="value" id="ending-balance">—</div></div>
+        <div class="card"><div class="label">Total contributions</div><div class="value" id="total-contrib">—</div></div>
+        <div class="card"><div class="label">Total interest</div><div class="value" id="total-interest">—</div></div>
+        <div class="card"><div class="label">Inflation-adjusted</div><div class="value" id="real-balance">—</div></div>
+      </div>
+      <canvas id="chart" height="160"></canvas>
+      <details>
+        <summary>Amortization table</summary>
+        <table id="table"></table>
+      </details>
+    </section>
+    <footer>
+      <p>Made with ❤️. Educational use only; not financial advice.</p>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
